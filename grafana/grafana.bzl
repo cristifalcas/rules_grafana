@@ -1,4 +1,3 @@
-load("@io_bazel_rules_grafana_deps//:requirements.bzl", "requirement")
 load("@io_bazel_rules_grafana_deps3//:requirements.bzl", requirement3 = "requirement")
 
 def _json_dashboard(ctx):
@@ -77,7 +76,7 @@ def _py_dashboard_builder(src, python_version, deps = None):
     py_binary_name = src.replace(".py", "_builder")
     grafana_deps = None
     if python_version == "PY2":
-        grafana_deps = requirement("grafanalib")
+        fail("Removed py2 support")
     elif python_version == "PY3":
         grafana_deps = requirement3("grafanalib")
     else:

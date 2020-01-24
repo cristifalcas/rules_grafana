@@ -36,10 +36,6 @@ def repositories(grafanalib_pip_specifier = DEFAULT_GRAFANALIB_PIP_SPECIFIER, us
         requirements = [grafanalib_pip_specifier],
     )
 
-    pip_import(
-        name = "io_bazel_rules_grafana_deps",
-        requirements = "@io_bazel_rules_grafana_dynamic_requirements//:requirements.txt",
-    )
     pip3_import(
         name = "io_bazel_rules_grafana_deps3",
         requirements = "@io_bazel_rules_grafana_dynamic_requirements//:requirements.txt",

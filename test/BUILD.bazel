@@ -13,7 +13,7 @@ json_dashboards(
 py_dashboards(
     name = "py_dashboards",
     srcs = ["dash.py"],
-    python_version = "PY2",
+    python_version = "PY3",
 )
 
 py_dashboards(

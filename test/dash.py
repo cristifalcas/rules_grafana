@@ -3,11 +3,11 @@ from grafanalib._gen import print_dashboard
 import sys
 
 # this should fail if loaded in python3
-if b'test' != 'test':
-    sys.exit(1)
-d = {'a': 1, 'b': 2}
-for key, value in d.iteritems():
-    continue
+# if b'test' != 'test':
+#     sys.exit(1)
+# d = {'a': 1, 'b': 2}
+# for key, value in d.iteritems():
+#     continue
 
 dashboard = Dashboard(
     title="Python sample",

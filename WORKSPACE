@@ -29,27 +29,28 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 
 gazelle_dependencies()
 
-# rules_python master as of 2019-11-15
-rules_python_version = "94677401bc56ed5d756f50b441a6a5c7f735a6d4"
+rules_python_version = "3d3725f4d77527c3b1a6b0a318b274876ae09a4f"
 
-git_repository(
+http_archive(
     name = "rules_python",
-    commit = rules_python_version,
-    remote = "https://github.com/bazelbuild/rules_python.git",
+    sha256 = "b87a58c84ee32e26754fb455c47b1c523c30177211e933fb6249eea06cf1c14d",
+    strip_prefix = "rules_python-%s" % rules_python_version,
+    type = "zip",
+    urls = [
+        "https://github.etsycorp.com/Engineering/rules_python/archive/%s.zip" % rules_python_version,
+    ],
 )
 
 load("@rules_python//python:pip.bzl", "pip_repositories")
 
 pip_repositories()
 
-# rules_docker master on 2019-10-25
-rules_docker_version = "0.12.1"
+rules_docker_version = "0.14.1"
 
 http_archive(
     name = "io_bazel_rules_docker",
-    sha256 = "8137d638349b076a1462f06d33d3ec5aaef607c0944fd73478447a7bc313e918",
+    sha256 = "cc6144e61d87b96f219bc5392ecf92fef01ca30da502ed543b4524625bdf06a2",
     strip_prefix = "rules_docker-%s" % rules_docker_version,
-    type = "zip",
     urls = ["https://github.com/bazelbuild/rules_docker/archive/v%s.zip" % rules_docker_version],
 )
 
@@ -73,10 +74,8 @@ load("@io_bazel_rules_grafana//grafana:workspace.bzl", "grafana_plugin", "reposi
 
 repositories()
 
-load("@io_bazel_rules_grafana_deps//:requirements.bzl", "pip_install")
 load("@io_bazel_rules_grafana_deps3//:requirements.bzl", pip_install3 = "pip_install")
 
-pip_install()
 pip_install3()
 
 grafana_plugin(
